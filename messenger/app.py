@@ -5,7 +5,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key-database'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///messenger.db'
+# ИСПРАВЛЕННАЯ СТРОКА ДЛЯ СЕРВЕРА VERCEL (4 слэша и папка /tmp/):
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/messenger.db'
 db = SQLAlchemy(app)
 
 login_manager = LoginManager()
