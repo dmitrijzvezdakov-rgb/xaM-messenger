@@ -1,0 +1,9 @@
+meta:
+  environment: python
+  toolchain: pip
+build:
+  requirements: requirements.txt
+run:
+  script: app.py
+  persistence:
+    - /data
