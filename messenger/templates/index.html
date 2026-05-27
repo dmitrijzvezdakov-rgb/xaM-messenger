@@ -1,0 +1,23 @@
+<div style="max-width: 600px; margin: 20px auto; font-family: sans-serif;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px;">
+        <h2>Привет, {{ current_user.username }}!</h2>
+        <a href="/logout" style="color: red; text-decoration: none;">Выйти</a>
+    </div>
+
+    <h3 style="margin-top: 20px;">Выложить новость</h3>
+    <form method="POST">
+        <textarea name="content" placeholder="Что у вас нового?" rows="4" style="width: 100%; padding: 10px; resize: none;" required></textarea><br><br>
+        <button type="submit" style="padding: 10px 20px; background: #007BFF; color: white; border: none; cursor: pointer; border-radius: 4px;">Опубликовать</button>
+    </form>
+
+    <h3 style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">Лента новостей</h3>
+    {% for post in posts %}
+        <div style="border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 5px; background: #f9f9f9;">
+            <p style="margin: 0 0 10px 0;"><strong>Выложил:</strong> <span style="color: #007BFF;">{{ post.author.username }}</span></p>
+            <p style="margin: 0 0 15px 0; white-space: pre-wrap;">{{ post.content }}</p>
+            <small style="color: gray; display: block; text-align: right;">{{ post.date_posted.strftime('%d.%m.%Y %H:%M') }}</small>
+        </div>
+    {% else %}
+        <p style="color: gray;">Пока никто не выложил ни одной новости. Будьте первым!</p>
+    {% endfor %}
+</div>
